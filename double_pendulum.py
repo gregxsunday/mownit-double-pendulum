@@ -90,11 +90,12 @@ def show_animation(time_start=0, time_end=10, initial_theta1=30, initial_theta2=
         thetas[0][i + 1], angular_velocities[0][i + 1], thetas[1][i + 1], angular_velocities[1][i + 1] = yout
 
     fig = plt.figure()
+    fig.canvas.set_window_title('Double Pendulum')
     plot_size = lengths[0] + lengths[1] + 0.5
     ax = fig.add_subplot(111, autoscale_on=False, xlim=(-plot_size, plot_size), ylim=(-plot_size, plot_size))
     ax.set_aspect('equal')
     ax.grid()
-
+    print(type(ax))
     line, = ax.plot([], [], 'o-', lw=2)
     time_template = 'time = %.1fs'
     time_text = ax.text(0.05, 0.9, '', transform=ax.transAxes)
@@ -120,6 +121,7 @@ def show_animation(time_start=0, time_end=10, initial_theta1=30, initial_theta2=
 
 def init_gui():
     root = tk.Tk()
+    root.title('Double pendulum parameters')
 
     properties = {
         'time start [s]': 0,
